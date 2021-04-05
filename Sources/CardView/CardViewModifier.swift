@@ -32,20 +32,14 @@ public struct CardViewModifier: ViewModifier {
             .scaleEffect(tapped ? Constants.scaleTapped : 1)
             .animation(.default)
             .gesture(
-                LongPressGesture(minimumDuration: 0.001)
-                    .updating($tapped, body: { (_, tapped, _) in
-                        tapped = true
-                    })
+                DragGesture(coordinateSpace: .global)
+                    .sequenced(
+                        before: DragGesture(minimumDistance: 0)
+                            .updating($tapped, body: { (current, tapped, something) in
+                                tapped = true
+                            })
+                    )
             )
-//            .simultaneousGesture(
-//                DragGesture(coordinateSpace: .global)
-//                    .sequenced(
-//                        before: DragGesture(minimumDistance: 0)
-//                            .updating($tapped, body: { (current, tapped, something) in
-//                                tapped = true
-//                            })
-//                    )
-//            )
     }
 }
 
