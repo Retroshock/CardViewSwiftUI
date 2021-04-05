@@ -16,7 +16,7 @@ public struct CardViewModifier: ViewModifier {
     
     @GestureState private var tapped = false
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .frame(
                 width: frameWidth,
