@@ -2,7 +2,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct CardViewModifier: ViewModifier {
+public struct CardViewModifier: ViewModifier {
     private enum Constants {
         static let scaleTapped: CGFloat = 0.9
     }
@@ -41,7 +41,7 @@ struct CardViewModifier: ViewModifier {
 }
 
 @available(iOS 13.0, *)
-extension View {
+public extension View {
     func cardModifier(
         frameWidth: CGFloat = 200,
         frameHeight: CGFloat = 200,
