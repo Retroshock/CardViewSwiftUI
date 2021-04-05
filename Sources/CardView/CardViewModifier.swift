@@ -33,6 +33,7 @@ public struct CardViewModifier: ViewModifier {
             .animation(.default)
             .simultaneousGesture(
                 DragGesture(minimumDistance: 0)
+                    .sequenced(before: DragGesture(coordinateSpace: .global))
                     .updating($tapped, body: { (current, tapped, something) in
                         tapped = true
                     })
