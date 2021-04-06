@@ -3,18 +3,12 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct CardViewModifier: ViewModifier {
-    private enum Constants {
-        static let scaleTapped: CGFloat = 0.9
-    }
-    
     let frameWidth: CGFloat
     let frameHeight: CGFloat
     let cornerRadius: CGFloat
     let shadowRadius: CGFloat
     let shadowYPosition: CGFloat
     let shadowXPosition: CGFloat
-    
-    @GestureState private var tapped = false
     
     public func body(content: Content) -> some View {
         content
@@ -28,22 +22,6 @@ public struct CardViewModifier: ViewModifier {
                 radius: shadowRadius,
                 x: shadowXPosition,
                 y: shadowYPosition
-            )
-            .scaleEffect(tapped ? Constants.scaleTapped : 1)
-            .animation(.default)
-//            .simultaneousGesture(
-//                DragGesture(minimumDistance: 0, coordinateSpace: .local)
-//                    .updating($tapped, body: { (_, tapped, _) in
-//                        tapped = true
-//                    })
-//                    .sequenced(
-//                        before: DragGesture(coordinateSpace: .global)
-//                    )
-//            )
-            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                        .updating($tapped, body: { (_, tapped, _) in
-                            tapped = true
-                        })
             )
     }
 }
