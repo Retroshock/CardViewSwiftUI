@@ -35,7 +35,7 @@ public struct CardViewModifier: ViewModifier {
                 DragGesture(coordinateSpace: .global)
                     .sequenced(
                         before: DragGesture(minimumDistance: 0)
-                            .updating($tapped, body: { (current, tapped, something) in
+                            .updating($tapped, body: { (_, tapped, _) in
                                 tapped = true
                             })
                     )
