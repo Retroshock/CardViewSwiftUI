@@ -31,7 +31,7 @@ public struct CardViewModifier: ViewModifier {
             )
             .scaleEffect(tapped ? Constants.scaleTapped : 1)
             .animation(.default)
-            .gesture(
+            .simultaneousGesture(
                 DragGesture(coordinateSpace: .global)
                     .sequenced(
                         before: DragGesture(minimumDistance: 0)
